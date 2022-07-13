@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect, useState } from 'react';
+import './styles/App.css';
+import RepoService from './API/RepoService';
+import { useFetching } from './hooks/useFetching'
 function App() {
+  const [repos, setRepos] = useState([])
+  const [value, setValue] = useState('');
+  const [page, setPage] = useState(1);
+
+    const [fetchRepos, isReposLoading, RepoError] = useFetching(async (value, page) => {
+      debugger;
+      const response = await RepoService.getAll(value, page);
+      setRepos(response.data)
+      const totalCount = response.headers['x-total-count']
+    })
+
+    useEffect(() => {
+      debugger;
+      fetchRepos(value, page)
+    }, [page])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
   );
 }
