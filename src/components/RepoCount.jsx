@@ -1,10 +1,8 @@
 import React from 'react';
 
 const RepoCount = ({totalCount}) => {
-    console.log(totalCount)
     return (
-    
-        <span className='counter'>Найдено {totalCount} репозиториев</span>
+        totalCount > 0 ? <span className='counter'>Найдено {totalCount} репозиториев</span> : ''
     );
 };
 

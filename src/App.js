@@ -4,6 +4,7 @@ import RepoService from './API/RepoService';
 import { useFetching } from './hooks/useFetching';
 import SearchInput from './components/SearchInput';
 import RepoCount from './components/RepoCount';
+import RepoList from './components/RepoList';
 
 function App() {
   const [repos, setRepos] = useState([])
@@ -20,13 +21,17 @@ function App() {
     }, [page])
 
     const getSearchValue = value => {
+      if (value === '') {
+        setRepos([])
+      }
       fetchRepos(value, page)
     }
-    
+
   return (
     <div className="App">
       <SearchInput getValue={getSearchValue} />
       <RepoCount totalCount={repos.total_count}/>
+      <RepoList repositories={repos}/>
     </div>
   );
 }

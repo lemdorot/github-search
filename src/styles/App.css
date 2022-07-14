@@ -23,9 +23,35 @@
 }
 
 .counter {
+  font-size: 20px;
   margin: 0 auto;
   display: block;
   padding: 8px 15px;
   text-align: center;
   width: 50%;
+}
+
+.repo {
+  margin: 0 auto;
+  margin-bottom: 2px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border: 2px solid mediumslateblue;
+}
+
+.repo_id {
+  width: 20%;
+  text-align: left;
+}
+
+.repo_url {
+  width: 40%;
+  text-align: left;
+}
+
+.repo_owner {
+  width: 40%;
+  text-align: left;
 }
