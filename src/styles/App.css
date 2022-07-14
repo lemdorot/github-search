@@ -21,3 +21,11 @@
 	line-height: 20px;
 	padding: 8px 15px;
 }
+
+.counter {
+  margin: 0 auto;
+  display: block;
+  padding: 8px 15px;
+  text-align: center;
+  width: 50%;
+}

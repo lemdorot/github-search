@@ -3,6 +3,7 @@ import './styles/App.css';
 import RepoService from './API/RepoService';
 import { useFetching } from './hooks/useFetching';
 import SearchInput from './components/SearchInput';
+import RepoCount from './components/RepoCount';
 
 function App() {
   const [repos, setRepos] = useState([])
@@ -12,7 +13,6 @@ function App() {
     const [fetchRepos, isReposLoading, RepoError] = useFetching(async (value, page) => {
       const response = await RepoService.getAll(value, page);
       setRepos(response.data)
-      console.log(response.data)
     })
 
     useEffect(() => {
@@ -22,10 +22,11 @@ function App() {
     const getSearchValue = value => {
       fetchRepos(value, page)
     }
-
+    
   return (
     <div className="App">
       <SearchInput getValue={getSearchValue} />
+      <RepoCount totalCount={repos.total_count}/>
     </div>
   );
 }
